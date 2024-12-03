@@ -1,8 +1,16 @@
-prompt = "Enter a todo: "
 todo_list = []
 
 while True:
-    user_todo = input(prompt)
-    todo_list.append(user_todo)
-    print(user_todo)
-    print(todo_list)
+    user_action = input("Type add, show or exit: ").strip()
+
+    match user_action:
+        case "add":
+            task = input("Enter a todo: ")
+            todo_list.append(task)
+        case "show":
+            for task in todo_list:
+                print(task)
+        case "exit":
+            break
+
+print("End of operation")
