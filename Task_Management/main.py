@@ -1,12 +1,19 @@
-todo_list = []
-
 while True:
     user_action = input("Type add, show, edit, complete or exit: ").strip()
 
     match user_action:
         case "add":
-            task = input("Enter a todo: ")
+            file = open("Files/todo_list.txt", "r")
+            todo_list = file.readlines()
+            file.close()
+
+            task = input("Enter a todo: ") + "\n"
             todo_list.append(task)
+
+            file = open("Files/todo_list.txt", "w")
+            file.writelines(todo_list)
+            file.close()
+
         case "show":
             for index, task in enumerate(todo_list):
                 print(f"{index + 1}-{task}")
