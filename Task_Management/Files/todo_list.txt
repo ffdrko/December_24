@@ -1,2 +1,3 @@
-read a book.
 post a review.
+find a website
+read a AI related paper.
