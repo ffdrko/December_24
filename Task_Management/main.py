@@ -3,46 +3,40 @@ while True:
 
     match user_action:
         case "add":
-            file = open("Files/todo_list.txt", "r")
-            todo_list = file.readlines()
-            file.close()
+            with open('Files/todo_list.txt') as file:
+                todo_list = file.readlines()
 
             task = input("Enter a todo: ") + "\n"
             todo_list.append(task)
 
-            file = open("Files/todo_list.txt", "w")
-            file.writelines(todo_list)
-            file.close()
+            with open('Files/todo_list.txt', 'w') as file:
+                file.writelines(todo_list)
 
         case "show":
-            file = open("Files/todo_list.txt", "r")
-            todo_list = file.readlines()
-            file.close()
+            with open('Files/todo_list.txt') as file:
+                todo_list = file.readlines()
+
             for index, task in enumerate(todo_list):
                 print(f"{index + 1}-{task.strip('\n')}")
         case 'edit':
-            file = open("Files/todo_list.txt", "r")
-            todo_list = file.readlines()
-            file.close()
+            with open('Files/todo_list.txt') as file:
+                todo_list = file.readlines()
 
             todo_num = int(input("Enter your todo number: ")) - 1
             todo_list[todo_num] = input("Enter your new todo: ") + '\n'
 
-            file = open("Files/todo_list.txt", "w")
-            file.writelines(todo_list)
-            file.close()
+            with open('Files/todo_list.txt', 'w') as file:
+                file.writelines(todo_list)
 
         case 'complete':
-            file = open("Files/todo_list.txt", "r")
-            todo_list = file.readlines()
-            file.close()
+            with open('Files/todo_list.txt') as file:
+                todo_list = file.readlines()
 
             todo_num = int(input("Enter your todo number: ")) - 1
             todo_list.pop(todo_num)
 
-            file = open("Files/todo_list.txt", "w")
-            file.writelines(todo_list)
-            file.close()
+            with open('Files/todo_list.txt', 'w') as file:
+                file.writelines(todo_list)
         case "exit":
             break
 
